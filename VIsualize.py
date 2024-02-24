@@ -31,7 +31,7 @@ def plot(u,v, filename, movie_select, movie_names, moving_names = "", moving_dis
 
     #ax.set_xlim(-1,1.5)
     ax.grid(which='major')
-    plt.savefig(filename)
     plt.xlabel("Latent Feature 1")
     plt.ylabel("Latent Feature 2")
+    plt.savefig(filename)
     return
