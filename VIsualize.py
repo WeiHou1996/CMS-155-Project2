@@ -13,7 +13,7 @@ def projection(u,v, bias_movie=0, bias_user=0):
 
     return u_proj, v_proj
 
-def plot(u,v, filename, movie_select, movie_names, moving_names = "", moving_dist_x = 0, moving_dist_y = 0):
+def plot(u,v, filename, movie_select, movie_names, title = None, moving_names = "", moving_dist_x = 0, moving_dist_y = 0):
     u_proj, v_proj = projection(u,v)
     fig,ax = plt.subplots()
     #fig.set_size_inches(10,10)
@@ -27,11 +27,15 @@ def plot(u,v, filename, movie_select, movie_names, moving_names = "", moving_dis
             ax.annotate(stringv, (v_proj_sub0[i] + moving_dist_x, v_proj_sub1[i]+moving_dist_y), size=8)
         else:
             ax.annotate(stringv, (v_proj_sub0[i], v_proj_sub1[i]), size=8)
+
+    ax.set_xlabel('Latent Feature 1')
+    ax.set_ylabel('Latent Feature 2')
+
+    if title is not None:
+        ax.set_title(title)
         
 
     #ax.set_xlim(-1,1.5)
-    ax.grid(which='major')
-    plt.xlabel("Latent Feature 1")
-    plt.ylabel("Latent Feature 2")
+    ax.grid('major')
     plt.savefig(filename)
     return
